@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Reusable Modal</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
+<!-- 
+Here’s Task 1/10 – a clean, intermediate-level reusable modal popup component in JavaScript using only HTML, CSS, and JavaScript (no frameworks).
+
+✅ Features:
+Reusable modal
+
+Open/close on button click
+
+Close on clicking outside (overlay)
+
+ESC key closes the modal -->
+
+
+  <button id="openModalBtn">Open Modal</button>
+
+  <!-- Reusable Modal Structure -->
+  <div id="modal" class="modal hidden">  <!-- BackGround & Box as a Whole -->
+    <div class="modal-overlay"></div>  <!-- BackGround Separate given because , in Js we wrote [ display: none ] on overlay clicks [ BG Clicks ]=>  overlay.addEventListener('click', closeModal); -->
+    <div class="modal-content">  <!-- Model-Box Separate , one after another for a reason, not to Overlap  -->
+      <span class="close-btn">&times;</span>
+      <h2>Hello from Modal!</h2>
+      <p>This is a reusable modal popup component.</p>
+    </div>
+  </div>
+
+  <script src="modal.js"></script>
+   
+</body>
+</html>
+
+
+<!-- 
+
+| Element    | Default Behavior             | Notes                                                |
+| ---------- | ---------------------------- | ---------------------------------------------------  |
+| `<button>` | Clickable, styled by default | Overkill for a simple icon, needs resets             |
+| `<div>`    | Block element, full width    | Needs extra CSS to shrink it down                    |
+| `<span>`   | Inline element, minimal      | Lightweight, easy to style for a small close icon    | -->
+
+
+<!-- 
+  2️⃣ Second Snippet:
+The overlay <div> is a sibling to the .modal-content div.
+Result:
+
+The overlay can be targeted separately from the modal content.
+
+Clicking on the overlay div doesn’t overlap with the modal content—so you can specifically listen for overlay clicks to close the modal. -->
+
+
+
+<!-- 🔍 The Core Idea
+In your modal, there are two main pieces:
+1️⃣ The overlay (the dark background)
+2️⃣ The modal box (the white content in the center)
+
+Visually, they look the same whether:
+
+The modal box is inside the overlay
+
+Or the overlay and modal box are side-by-side. -->
+
+
+
+<!-- 
+🖼️ VISUAL DEMO (Think Like a Box)
+✅ Imagine you have a big box (modal)
+
+Inside that big box you put:
+
+a semi-transparent sheet (overlay)
+
+and the modal box with your text (modal-content).
+
+Now, depending on how you put those boxes, it matters for event handling.
+ -->

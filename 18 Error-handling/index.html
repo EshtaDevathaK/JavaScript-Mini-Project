@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Try/Catch JSON Parser</title>
+</head>
+<body>
+
+<!-- 
+Error Handling (try/catch)
+✅ GOAL
+Build a small JSON parsing utility that tries to parse user-entered JSON text. If the JSON is invalid, catch the error and display a friendly message instead of crashing. Reinforce how try/catch works in JavaScript.
+
+🎯 BEHAVIOR
+
+| Action                                           | Behavior                                         |
+| ------------------------------------------------ | ------------------------------------------------ |
+| User enters well-formed JSON                     | Parsed object is displayed                       |
+| User enters invalid JSON (missing comma/bracket) | `catch` block shows “Invalid JSON” error message |
+| Each key/value pair in valid JSON                | Shows up formatted below the input               |
+
+-->
+  <h2>JSON Parser with Error Handling</h2>
+  <textarea id="jsonInput" rows="8" cols="50" placeholder='Enter JSON, e.g. {"name": "Alice"}'></textarea>
+  <br />
+  
+  <button id="btnParse">Parse JSON</button>
+  <pre id="output" style="background: #f0f0f0; padding: 10px;"></pre>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+<!-- 🧪 Try It
+Open index.html.
+
+Enter valid JSON, e.g.:
+
+json
+Copy code
+{
+  "name": "Alice",
+  "age": 25,
+  "hobbies": ["reading", "swimming"]
+}
+Click Parse JSON → you’ll see:
+
+vbnet
+Copy code
+name: "Alice"
+age: 25
+hobbies: ["reading","swimming"]
+Change the input to invalid JSON (e.g., missing quote or bracket):
+
+css
+Copy code
+{ name: "Alice", age: 25, }
+Click Parse JSON → you’ll see something like:
+
+javascript
+Copy code
+❌ Invalid JSON: Unexpected token n in JSON at position 2
+Fix the syntax error and re-click to see normal parsing. -->

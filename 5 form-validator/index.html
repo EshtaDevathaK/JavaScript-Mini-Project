@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Form Validator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- 
+    Perfect! Here's Task 5/10 — a dynamic form validator tailored to your fresher-friendly learning style, while meeting intermediate-level behavior expectations.
+
+✅ GOAL:
+Build a dynamic form validator that:
+
+Validates multiple fields in real-time (as user types or submits)
+
+Shows error messages under the relevant input
+
+Prevents submission if validation fails
+
+Highlights the fields with errors
+
+🎯 BEHAVIOR:
+
+| Field        | Rule                  | Behavior                                  |
+| ------------ | --------------------- | ----------------------------------------- |
+| Name         | Must not be empty     | Shows "Name is required" if blank         |
+| Email        | Must be a valid email | Shows "Invalid email format" if wrong     |
+| Password     | Min 6 characters      | Shows "Password must be at least 6 chars" |
+| Submit Click | Runs all validations  | Prevents submission if any rule is broken |
+
+    -->
+
+  <h2>📝 Sign Up Form</h2>
+
+  <form id="signupForm" novalidate>
+    <div class="form-group">
+      <label>Name</label>
+      <input type="text" id="name" />
+      <small class="error-msg"></small>
+    </div>
+
+    <div class="form-group">
+      <label>Email</label>
+      <input type="email" id="email" />
+      <small class="error-msg"></small>
+    </div>
+
+    <div class="form-group">
+      <label>Password</label>
+      <input type="password" id="password" />
+      <small class="error-msg"></small>
+    </div>
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+
+<!-- 
+🧪 Try It:
+Leave a field blank → see error immediately
+
+Type invalid email or short password → see instant feedback
+
+Fix errors → red outline disappears
+
+Submit → only works if all validations pass ✅
+-->

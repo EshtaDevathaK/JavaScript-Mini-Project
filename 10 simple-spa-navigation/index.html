@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Simple SPA Navigation</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<!-- 
+Great choice for the last task! Here’s Task 10/10:
+A Simple SPA Navigation System built with vanilla JavaScript using the hashchange event — no React or frameworks, just pure JS.
+
+✅ GOAL:
+Build a minimal Single Page Application (SPA) navigation system that:
+
+Changes content dynamically based on URL hash (#home, #about, #contact)
+
+Uses window.onhashchange event to detect URL changes
+
+Updates page content without full reload
+
+Has a navigation bar with links changing the URL hash
+
+Loads default content on page load
+
+🎯 BEHAVIOR:
+
+| Action                   | Behavior                                    |
+| ------------------------ | ------------------------------------------- |
+| Click on nav links       | URL hash updates, content changes instantly |
+| Manually change URL hash | Content updates accordingly                 |
+| No full page reload      | Only content inside a div changes           |
+| Unknown hash             | Show a "Page Not Found" message             |
+
+-->
+  <nav>
+    <a href="#home">Home</a> |
+    <a href="#about">About</a> |
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <main id="app">
+    <!-- Dynamic content loads here -->
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+
+<!-- 
+🧪 Try It:
+Click links → content changes without page reload
+
+Change URL hash manually → content updates
+
+Enter unknown hash (e.g., #foo) → "Page Not Found" message appears
+-->

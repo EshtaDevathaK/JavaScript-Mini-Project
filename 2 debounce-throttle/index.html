@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Debounce & Throttle</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- 
+Here’s Task 2/10 – implement custom debounce and throttle functions in vanilla JavaScript and apply them to search input (debounce) and scroll event (throttle).
+
+✅ Goal:
+| Technique  | Purpose           | Example         |
+| ---------- | ----------------- | --------------- |
+| `debounce` | Waits for a pause | Live Search     |
+| `throttle` | Runs at intervals | Scroll tracking | -->
+
+
+  <h2>🔍 Debounced Search</h2>
+  <input type="text" id="searchInput" placeholder="Type to search...">
+  <p id="searchResult">Waiting for input...</p>
+
+  <h2>📜 Throttled Scroll</h2>
+  <p>Scroll down to see throttled event count:</p>
+  <div id="scrollBox">Scroll Me</div>
+  <p id="scrollCount">Scroll Count: 0</p>
+
+  <script src="script.js"></script>
+</body>
+</html>

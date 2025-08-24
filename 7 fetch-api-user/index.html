@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Fetch Users API</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- 
+Awesome! Here's your Task 7/10 — a clean, interactive project using the Fetch API to call a public REST API and display the results with error handling.
+
+✅ GOAL:
+Build a simple app that:
+
+Uses fetch() to get data from a public API (e.g., user profiles)
+
+Displays results in a clean UI
+
+Handles and shows errors (e.g., failed network, invalid response)
+
+Shows a loading state while fetching
+
+🎯 BEHAVIOR:
+
+| Action              | Behavior                                                         |
+| ------------------- | ---------------------------------------------------------------- |
+| User loads the page | A list of users (from API) is displayed                          |
+| API fails           | An error message is shown instead                                |
+| While fetching      | A "Loading..." message is shown                                  |
+| Clean code          | Uses Fetch, `.then()`, `.catch()` and `finally` for flow control |
+
+-->
+
+  <h2>👥 Random Users</h2>
+
+  <div id="status">Loading...</div>
+  <div id="users"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+
+<!-- 
+🧪 Try It:
+Open in browser → fetches 5 random users
+
+Shows photo, name, email
+
+If network fails → shows error
+
+Always logs status in console -->
