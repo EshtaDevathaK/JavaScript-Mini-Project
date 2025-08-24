@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Event Delegation Demo</title>
+</head>
+<body>
+<!-- 
+Event Delegation
+✅ GOAL
+Implement event delegation on a dynamic list. Instead of attaching a click listener to each <li>, attach one listener to the parent <ul> and detect which <li> was clicked. This scales efficiently for large or changing lists.
+
+🎯 BEHAVIOR
+
+
+| Action                           | Behavior                                                        |
+| -------------------------------- | --------------------------------------------------------------- |
+| Click on any existing `<li>`     | Parent `<ul>`’s listener logs the text of the clicked item      |
+| Add new `<li>` items dynamically | Same parent listener still works—no need to add new listeners   |
+| Remove or change list items      | Parent listener continues, always checking the event’s `target` |
+
+-->
+  <h2>Click a Fruit (Event Delegation)</h2>
+  <ul id="fruitList">
+    <li>🍎 Apple</li>
+    <li>🍌 Banana</li>
+    <li>🍇 Grape</li>
+  </ul>
+  <button id="addFruit">Add a Random Fruit</button>
+  <!-- <pre id="output" style="background: rgb(117, 117, 117); padding: 10px; color: rgb(0, 0, 0);"></pre> -->
+
+  <script src="script.js"></script>
+</body>
+</html>
+<!-- 
+🧪 Try It
+Open index.html.
+
+Click on any existing fruit—observe the clicked item’s name displayed.
+
+Click “Add a Random Fruit” to append a new <li>.
+
+Click on the newly added fruit—notice the same parent listener handles it without reattaching any event.
+-->

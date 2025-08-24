@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>ES6 Modules Demo</title>
+</head>
+<body>
+
+<!-- 
+Modules (ES6 import/export)
+✅ GOAL
+Split code into multiple ES6 modules, demonstrating how to export functions/variables from one file and import them into another. See how modules help organize and reuse code.
+
+🎯 BEHAVIOR :
+
+| Action                            | Behavior                                                                     |
+| --------------------------------- | ---------------------------------------------------------------------------- |
+| Import utilities into main script | `sum` and `multiply` functions come from `utils.js` and work in `index.html` |
+| Changing utility code             | Any update in `utils.js` instantly reflected when reloaded                   |
+| Attempt to import non-exported    | Browser console error—teaches explicit exports are required                  |
+
+-->
+
+<h2>ES6 Module Examples</h2>
+  <pre id="output" style="background: #fafafa; padding: 10px;"></pre>
+
+  <!-- Note: type="module" is required for ES6 imports to work -->
+  <script type="module" src="main.js"></script>
+</body>
+</html>
+
+<!-- 
+
+🧪 Try It
+Use a local server or live-server (e.g., npx http-server) to serve these files—ES6 modules require HTTP (not file://).
+
+Open the page and see results for sum, multiply, and subtract.
+
+In utils.js, change the implementation (e.g., make sum do subtraction) and refresh—to see how modules update automatically.
+
+Try commenting out export in utils.js and reload—observe the console error about missing export, reinforcing the need for explicit exports. -->

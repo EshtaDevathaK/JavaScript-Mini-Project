@@ -1,0 +1,34 @@
+body {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  max-width: 500px;
+  margin: auto;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  margin-bottom: 15px;
+  position: relative;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+input.invalid {
+  border: 2px solid red;
+}
+
+.error-msg {
+  color: red;
+  font-size: 13px;
+  margin-top: 5px;
+  height: 14px;
+}

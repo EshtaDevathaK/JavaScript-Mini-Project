@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Custom Event System</title>
+</head>
+<body>
+<!-- 
+Perfect! Here’s your Task 9/10:
+Build a custom event system using Event Emitters and Listeners — like a mini version of Node.js’s EventEmitter — but in plain JavaScript.
+Think of this as the core building block of apps, frameworks, and real-time interactions 🔄
+
+✅ GOAL:
+Create your own mini event system that can:
+
+Feature	What it does
+.on(event)	Register a listener
+.emit(event)	Call all listeners of that event
+.off(event)	Remove a specific listener
+Reusable	Can emit custom-named events like "login", "submit" etc.
+
+🎯 BEHAVIOR:
+
+| Trigger                    | Behavior                                  |
+| -------------------------- | ----------------------------------------- |
+| `emitter.on('greet', cb)`  | Subscribes callback to event `'greet'`    |
+| `emitter.emit('greet')`    | Runs all `greet` callbacks                |
+| `emitter.off('greet', cb)` | Removes the `cb` from `'greet'` listeners |
+
+-->
+
+  <h2>🔔 Custom Event System</h2>
+  <button id="trigger">Emit 'greet' Event</button>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+<!-- 
+🧪 Try It:
+Click "Emit 'greet' Event"
+
+Shows an alert from the greetHandler()
+
+You can remove the handler with off() and see no response
+
+Easy to extend — e.g., emit "login", "click", "cart-add" etc. -->

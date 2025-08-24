@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  <meta charset="UTF-8">
+  <title>Friendly FAQ Accordion</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <h2>📚 FAQ Section</h2>
+
+  <div class="faq-section">
+    <div class="faq-item">
+      <button class="question-button">What is JavaScript?</button>
+      <div class="answer-box">
+        <p>JavaScript is a scripting language used to create and control dynamic website content.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="question-button">What is a Closure?</button>
+      <div class="answer-box">
+        <p>A closure is a function having access to its own scope, the outer function’s scope, and the global scope.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="question-button">What is the DOM?</button>
+      <div class="answer-box">
+        <p>The Document Object Model is a programming interface for HTML and XML documents.</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+<!-- 
+| Question                             | Answer                                                                                                                  |
+| ------------------------------------ | ----------------------------------------------------------------------------------------------------------------------- |
+| Where does `scrollHeight` come from? | The browser calculates it when the page renders, based on actual content inside the element                             |
+| Is it affected by `display: none`?   | Yes — if `display: none`, it returns `0`. It only works if the element is **in the layout** (even with `max-height: 0`) |
+| Why use it?                          | To animate content open/closed, without needing hardcoded heights                                                       |
+| Can it work on dynamic content?      | ✅ Yes — it always gives up-to-date height                                                                               | -->
+
+<!-- 
+🔸 Problem:
+CSS can’t animate height: auto, so if content size is dynamic, we can’t do smooth expand/collapse using plain CSS.
+
+🔸 Solution:
+max-height: 0;
+transition: max-height 0.4s ease;
+
+element.style.maxHeight = element.scrollHeight + 'px';
+
+That way it expands smoothly to exactly match content, no matter how big it is.
+
+| Content inside `.answer` | What scrollHeight returns | maxHeight gets set to |
+| ------------------------ | ------------------------- | --------------------- |
+| 1 line                   | \~24px                    | `24px`                |
+| 5 lines                  | \~100px                   | `100px`               |
+| 20 lines                 | \~400px                   | `400px`               |
+ -->

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Promises & Async/Await Demo</title>
+</head>
+<body>
+ 
+<!-- 
+Below are 10 intermediate-level JavaScript mini-tasks, each presented with a clear Goal, Behavior, File Structure, Code, and “Try It” instructions—designed for a fresher progressing to intermediate. Feel free to copy each into VS Code, run them, and tweak as you learn.
+
+1. Promises + Async/Await
+✅ GOAL
+Demonstrate fetching data from a public API using both Promise chaining (.then()/.catch()) and async/await. See how error handling differs and why async/await often leads to cleaner code.
+
+🎯 BEHAVIOR    
+
+| Action                               | Behavior                                                     |
+| ------------------------------------ | ------------------------------------------------------------ |
+| Call function using Promise chaining | Fetches JSON, logs data or logs any network/error            |
+| Call function using `async`/`await`  | Fetches JSON, logs data or handles errors inside `try/catch` |
+| Invalid URL or network failure       | Error message displayed in `catch` block (both approaches)   |
+
+
+-->
+<h2>Fetch with Promises vs. Async/Await</h2>
+  <button id="btnPromise">Fetch with .then()</button>
+  <button id="btnAsync">Fetch with async/await</button>
+
+  <!-- words represented by typographic conventions rather than by elements. -->
+  <pre id="output" style="background: #eee; padding: 10px;"></pre> 
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+
+<!-- 
+🧪 Try It
+Open index.html in the browser.
+
+Click “Fetch with .then()” and watch the post JSON appear or an error if the network is down.
+
+Click “Fetch with async/await”—observe the same data but handled inside a try/catch.
+
+Temporarily change API_URL to an invalid URL (e.g., .../invalid) and re-click each button to see how errors are caught differently.
+-->

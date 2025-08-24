@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Quiz App</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!-- 
+Perfect! Here's Task 8/10 — a simple yet interactive Quiz App with a timer and score calculation, designed to match your fresher-level comfort with intermediate-level behaviors.
+
+✅ GOAL: 
+Build a Quiz App that:
+
+Shows one question at a time (MCQ)
+
+Includes a countdown timer per question
+
+Tracks correct answers and displays final score
+
+Moves automatically to the next question after timer ends or user answers
+
+No backend needed — all client-side
+
+🎯 BEHAVIOR:
+
+| Feature             | Behavior                                      |
+| ------------------- | --------------------------------------------- |
+| Questions & options | Display one question at a time with 4 choices |
+| Timer (10s each)    | Automatically moves to next if time runs out  |
+| Score tracking      | +1 for each correct answer                    |
+| Final screen        | Shows score and "Try Again" option            |
+
+
+-->
+  <div id="quizBox">
+    <h2 id="question">Loading...</h2>
+    <div id="options"></div>
+    <p id="timer">⏳ 10</p>
+  </div>
+
+  <div id="resultBox" style="display: none;">
+    <h2>✅ Quiz Completed!</h2>
+    <p id="scoreDisplay"></p>
+    <button onclick="location.reload()">Try Again</button>
+  </div>
+<!-- location.reload() Just reloads the page -->
+  <script src="script.js"></script>
+</body>
+</html>
+
+
+<!-- 🧪 Try It:
+Each question has a 10-sec timer
+
+User can answer or let the timer move forward
+
+At the end, score is shown
+
+Click Try Again to restart 🔁 -->

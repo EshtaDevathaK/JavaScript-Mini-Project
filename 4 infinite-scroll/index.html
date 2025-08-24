@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Infinite Scroll</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <!-- Here's Task 4/10, explained clearly and beginner-friendly — while still being intermediate-level in behavior and logic.
+
+✅ GOAL:
+Implement an infinite scroll feature that:
+
+Keeps loading more items as the user scrolls near the bottom of the page.
+
+Mimics how Twitter, Instagram, or blogs auto-load new posts as you scroll.
+
+Uses JavaScript to dynamically create and append content (no page refresh).
+
+🎯 BEHAVIOR:
+
+| Action                       | Expected Outcome                                          |
+| ---------------------------- | --------------------------------------------------------- |
+| User scrolls to the bottom   | New items automatically load                              |
+| Scroll again                 | More content loads again (no duplicate, no manual reload) |
+| No "Load More" button needed | All automatic based on scroll position                    |
+
+-->
+  <h2>📜 Infinite Scroll Demo</h2>
+  <div id="content"></div> <!-- Place where result is displayed -->
+
+  <div id="loading">Loading more content...</div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
+
+
+<!-- 
+🧪 Test It:
+Open page — 10 items load
+
+Scroll down → 10 more items auto-append
+
+Repeat forever — no button, no refresh
+-->

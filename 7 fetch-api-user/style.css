@@ -1,0 +1,25 @@
+body {
+  font-family: sans-serif;
+  padding: 20px;
+  max-width: 600px;
+  margin: auto;
+}
+
+#users {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.user-card {
+  background: #f0f0f0;
+  padding: 12px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.user-card img {
+  border-radius: 50%;
+}

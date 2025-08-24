@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Basic JS Testing</title>
+</head>
+<body>
+<!-- 
+Basic Testing (Simple Unit Tests)
+✅ GOAL
+Write a set of basic unit tests (without using Jest) to verify simple utility functions—sum and isEven. Understand how to structure tests, check expected vs. actual, and report pass/fail.
+
+🎯 BEHAVIOR
+
+| Test                  | Expected Outcome                               |
+| --------------------- | ---------------------------------------------- |
+| `sum(2, 3) === 5`     | Test passes, log “PASS: sum(2,3) == 5”         |
+| `sum(-1, 1) === 0`    | Test passes                                    |
+| `isEven(4) === true`  | Test passes                                    |
+| `isEven(3) === false` | Test passes                                    |
+| Any other combination | On failure, log “FAIL: … expected … but got …” |
+
+-->
+
+
+  <h2>Open DevTools to See Test Results</h2>
+  <script src="test.js"></script>
+</body>
+</html>
+
+
+<!-- 
+🧪 Try It
+Open index.html in the browser.
+
+Press F12 (DevTools) → check the Console. You should see:
+
+✅ PASS: sum(2, 3) should be 5
+✅ PASS: sum(-1, 1) should be 0
+✅ PASS: isEven(4) should return true
+✅ PASS: isEven(3) should return false
+Uncomment the intentionally failing test at the bottom of test.js. Refresh → see a “FAIL” with details. This shows how a failing assertion is reported.
+
+-->

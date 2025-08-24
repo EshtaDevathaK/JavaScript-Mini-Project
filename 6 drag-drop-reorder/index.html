@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Drag & Drop Reorder</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!-- 
+Great! Here’s Task 6/10 — a fully functional drag-and-drop interface that lets you reorder list items using vanilla JavaScript — beginner-friendly, but with intermediate behavior.
+
+✅ GOAL:
+Build a client-side drag-and-drop interface that:
+
+Lets you reorder list items with your mouse
+
+Uses HTML5 drag-and-drop API
+
+Gives visual feedback (e.g. highlight the drop target)
+
+Updates the list order on drop (client-side only)
+
+🎯 BEHAVIOR:  
+
+| Action                 | Behavior                                       |
+| ---------------------- | ---------------------------------------------- |
+| Click and drag an item | It moves with the cursor                       |
+| Drag over another item | That item gets highlighted                     |
+| Drop                   | The dragged item takes the place of the target |
+| No external libraries  | Only HTML, CSS, and JS used                    |
+
+-->
+  <h2>📦 Reorder Items (Drag & Drop)</h2>
+
+  <ul id="draggableList">
+    <li draggable="true">🍎 Apple</li>
+    <li draggable="true">🍌 Banana</li>
+    <li draggable="true">🍇 Grape</li>
+    <li draggable="true">🍍 Pineapple</li>
+    <li draggable="true">🍉 Watermelon</li>
+  </ul>
+
+  <script src="script.js"></script>
+</body>
+</html>
+ 
+<!-- 
+🧪 Try It:
+Drag one fruit item above or below others
+
+Drop → list reorders instantly
+
+Try all combinations — no page reload, no backend needed
+
+Highlight feedback helps show drop location clearly
+-->

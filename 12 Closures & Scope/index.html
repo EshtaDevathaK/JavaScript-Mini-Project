@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Closures & Scope</title>
+</head>
+<body>
+
+<!-- 
+ Closures & Scope
+✅ GOAL
+Build a counter component using a closure so that its internal count state is private. Understand how inner functions “remember” their scope even after the outer function finishes executing.
+
+🎯 BEHAVIOR
+
+| Action                      | Behavior                                                               |
+| --------------------------- | ---------------------------------------------------------------------- |
+| Call `createCounter()`      | Returns a function that, when called, increments and returns the count |
+| Call counter multiple times | Each call increases the private `count`—demonstrates closure retention |
+| Multiple counters           | Each counter has its own private `count` (they don’t interfere)        |
+
+-->
+  <h2>Closure-Based Counter</h2>
+  <button id="btnCounter1">Increment Counter 1</button>
+  <span id="display1">0</span>
+  
+  <br /><br />
+  <button id="btnCounter2">Increment Counter 2</button>
+  <span id="display2">0</span>
+
+  <script src="script.js"></script> 
+</body>
+</html>
+
+<!-- 
+🧪 Try It
+Open index.html. You’ll see two buttons and two counters (0 initially).
+
+Click “Increment Counter 1” repeatedly—each click increases that counter but not Counter 2.
+
+Click “Increment Counter 2” separately—observe Counter 1 remains unchanged.
+
+Notice how each counter has its own private count thanks to the closure. -->

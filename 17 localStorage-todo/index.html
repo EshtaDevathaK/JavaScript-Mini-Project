@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>LocalStorage To-Do</title>
+</head>
+<body>
+
+    <!-- 
+7. LocalStorage / SessionStorage
+✅ GOAL
+Create a simple to-do form where items are saved in localStorage so that, on page reload, previously saved to-dos reappear. Learn how to store, retrieve, and remove data from localStorage.
+
+🎯 BEHAVIOR
+
+| Action                    | Behavior                                                   |
+| ------------------------- | ---------------------------------------------------------- |
+| Submit a new to-do        | Item appended to list and stored in `localStorage`         |
+| Reload page               | Previously saved to-dos load from `localStorage`           |
+| Click "Remove" on an item | That item is removed from both the list and `localStorage` |
+
+    -->
+  <h2>To-Do List (Persists with localStorage)</h2>
+  
+  <form id="todoForm">
+    <input type="text" id="todoInput" placeholder="Enter a task" required />
+    <button type="submit">Add</button>
+  </form>
+
+  <ul id="todoList"></ul>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+<!-- 
+
+🧪 Try It
+Open index.html in your browser.
+
+Enter a task (e.g., “Buy groceries”) and click Add—item appears in the list.
+
+Refresh the page—task remains (loaded from localStorage).
+
+Click Remove next to an item—item disappears and is removed from localStorage.
+
+Refresh again—item is gone permanently. -->

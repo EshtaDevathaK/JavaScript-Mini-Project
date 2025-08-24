@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Prototypes & Inheritance</title>
+</head>
+<body>
+
+<!-- 
+Prototypes & Inheritance
+✅ GOAL
+Implement a simple prototype-based inheritance system: create a general Person “class” and then a specialized Student that inherits from Person. Understand how methods on the prototype chain work.
+ 
+🎯 BEHAVIOR  
+
+| Action                     | Behavior                                                                                    |
+| -------------------------- | ------------------------------------------------------------------------------------------- |
+| Create `Person` instances  | Each has `name` and `greet()` method from `Person.prototype`                                |
+| Create `Student` instances | `Student` inherits from `Person`, has its own `study()` method plus `greet()` via prototype |
+| Call methods               | `stud.study()` calls Student’s method; `stud.greet()` comes from Person’s prototype         |
+
+-->
+  <h2>Prototype-Based Inheritance Demo</h2>
+  <button id="btnPerson">Create & Greet Person</button>
+  <button id="btnStudent">Create & Greet Student</button>
+  <pre id="output" style="background: #f5f5f5; padding: 10px;"></pre>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+<!-- 
+🧪 Try It
+Open index.html.
+
+Click “Create & Greet Person” → you’ll see Alice’s greeting from Person.prototype.greet().
+
+Click “Create & Greet Student” → Bob’s greeting (inherited from Person) plus Bob’s study() method (defined on Student.prototype).
+
+Inspect in DevTools: s.__proto__ === Student.prototype, and Student.prototype.__proto__ === Person.prototype.
+-->

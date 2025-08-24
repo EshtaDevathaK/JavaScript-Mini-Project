@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Array Methods Demo</title>
+</head>
+<body>
+
+<!-- 
+ Array Methods Deep Dive (map, filter, reduce)
+✅ GOAL
+Use map, filter, and reduce to process an array of “orders” and produce derived outputs: (1) a list of prices doubled; (2) only expensive orders; (3) total revenue.
+
+🎯 BEHAVIOR
+
+
+| Method   | Purpose                                              | Example Output                                |
+| -------- | ---------------------------------------------------- | --------------------------------------------- |
+| `map`    | Transform each element (e.g., double price)          | `[20, 40, 60, ...]`                           |
+| `filter` | Select elements matching criteria (e.g., price > 25) | `[ {id:2, price:30}, {id:4, price:50}, ... ]` |
+| `reduce` | Aggregate values (e.g., sum of all prices)           | `totalRevenue = 150`                          |
+
+
+-->
+  <h2>map, filter, reduce Examples</h2>
+  <pre id="output" style="background: #f0f0f0; padding: 10px;"></pre>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+<!--
+🧪 Try It
+Open index.html in the browser.
+
+Inspect the console or see the displayed output —
+
+map result: each price × 2
+
+filter result: only orders with price > 25
+
+reduce result: total of all price values
+
+Modify the orders array (e.g., add an order with price: 100) and refresh—see how each method’s output changes accordingly. -->
