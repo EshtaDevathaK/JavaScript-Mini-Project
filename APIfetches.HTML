@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Map + Weather + Movie</title>
+
+  <!-- Mapbox CSS -->
+  <link href="https://api.mapbox.com/mapbox-gl-js/v2.9.2/mapbox-gl.css" rel="stylesheet" />
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background: #f5f5f5;
+    }
+    h2 {
+      margin-top: 40px;
+    }
+    input, button {
+      padding: 8px;
+      margin: 5px;
+    }
+    #map {
+      height: 300px;
+      margin-top: 10px;
+    }
+    .result {
+      background: white;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>🌍 Mapbox Map</h2>
+  <div id="map"></div>
+
+  <h2>☁️ Weather Search</h2>
+  <input type="text" id="weatherInput" placeholder="Enter city">
+  <button onclick="getWeather()">Get Weather</button>
+  <div id="weatherResult" class="result"></div>
+
+  <h2>🎬 Movie Search</h2>
+  <input type="text" id="movieInput" placeholder="Enter movie title">
+  <button onclick="getMovie()">Search Movie</button>
+  <div id="movieResult" class="result"></div>
+
+  <!-- Mapbox JS -->
+  <!-- mapbox gl js cdn link -->
+  <script src="https://api.mapbox.com/mapbox-gl-js/v2.9.2/mapbox-gl.js"></script>
+
+  <script>
+    // ------------------ 🔐 API KEYS ------------------
+    const MAPBOX_KEY = 'pk.eyJ1IjoiZXNodGFkZXZhdGhhIiwiYSI6ImNtNnBxeWV6eTFwY2cydHM4ZXd3bndzenAifQ.ipBpO4fA-O2Qd5S9-uto6A';
+    const OPENWEATHER_KEY = '33380abeed3051f5eef2276c1a2b6036';
+    const OMDB_KEY = '8615b10';
+
+    // ------------------ 🗺️ Mapbox ------------------
+    mapboxgl.accessToken = MAPBOX_KEY;
+    const map = new mapboxgl.Map({
+      container: 'map',
+      style: 'mapbox://styles/mapbox/streets-v11',
+      center: [77.2090, 28.6139], // Delhi
+      zoom: 10
+    });
+
+    new mapboxgl.Marker()
+      .setLngLat([77.2090, 28.6139])
+      .addTo(map);
+
+// ------------------ ☁️ Weather Function ------------------
+    function getWeather() {
+      const city = document.getElementById('weatherInput').value.trim();
+      const resultBox = document.getElementById('weatherResult');
+      if (!city) return resultBox.innerText = "Please enter a city.";
+
+      const apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${OPENWEATHER_KEY}&units=metric`;
+//Base: https://api.openweathermap.org/data/2.5/weather
+//Params: ?q=city&appid=key&units=metric
+ 
+
+      fetch(apiURL)
+        .then(res => res.json())
+        .then(data => {
+          if (data.cod !== 200) { //cod means code from the OpenWeather API response.
+             //It tells whether the API request was successful or failed.
+            //200 → ✅ Success
+           //404 → ❌ Not found (like wrong city name)
+          //401 → ❌ Unauthorized (wrong API key)
+            resultBox.innerText = "City not found!";
+            return;
+          }
+       
+resultBox.innerHTML = ` <h3>${data.name}, ${data.sys.country}</h3>
+            <p>${data.weather[0].description}</p>
+            <p>🌡️ Temp: ${data.main.temp}°C</p>
+            <p>💧 Humidity: ${data.main.humidity}%</p> `;
+
+        })
+        .catch(() => resultBox.innerText = "Something went wrong.");
+    }
+
+    // ------------------ 🎬 Movie Function ------------------
+    function getMovie() {
+      const title = document.getElementById('movieInput').value.trim();
+      const resultBox = document.getElementById('movieResult');
+      if (!title) return resultBox.innerText = "Please enter a movie title.";
+
+      const apiURL = `https://www.omdbapi.com/?t=${title}&apikey=${OMDB_KEY}`;
+
+      fetch(apiURL)
+        .then(res => res.json())
+        .then(data => {
+          if (data.Response === "False") {
+            resultBox.innerText = "Movie not found!";
+            return;
+          }
+          resultBox.innerHTML = `
+            <h3>${data.Title} (${data.Year})</h3>
+            <p>⭐ IMDB: ${data.imdbRating}</p>
+            <img src="${data.Poster}" alt="${data.Title} poster" width="150">
+          `;
+        })
+        .catch(() => resultBox.innerText = "Something went wrong.");
+    }
+  </script>
+</body>
+</html>
+
+
+
+
+<!-- ✅ return  Answer:
+👉 return is used to stop further code execution inside the function if the condition is true.
+
+Without return, the rest of the code WILL continue to run, even if the city is not found — which causes wrong or undefined data to show. -->
+
+
+
+
+
+
+
+
+
+            <!-- //sys is a section inside the API response          .sys.country = get the country inside the sys part.
+            //"sys": {
+            //      "country": "IN",
+            //      "sunrise": 123456789,
+            //      "sunset": 123456799
+            //    }
+
+
+          //   <p>${data.weather[0].description}</p>
+          //   weather is an array in the response.
+          //   Then .description means: "clear sky" or "rainy", etc.
+          //  "weather": [
+  //{
+   // "description": "clear sky",
+   // "main": "Clear",
+   // "icon": "01d"
+ // }
+//]
+                          //✅ Explanation: <p>🌡️ Temp: ${data.main.temp}°C</p>
+                          //main is a section inside the API that groups main data like:
+
+                          //"main": {
+                          //  "temp": 27.5,
+                          //  "humidity": 78,
+                          //  "pressure": 1012
+                          //} -->

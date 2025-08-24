@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Mini Calculator</title>
+  <style>
+    /* Basic page styling */
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .calculator {
+      background: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+      width: 280px;
+    }
+
+    .display {
+      width: 100%;
+      height: 60px;
+      background: #222;
+      color: #fff;
+      font-size: 2rem;
+      text-align: right;
+      padding: 10px;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      overflow-x: auto;
+    }
+
+    .buttons {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+
+    button {
+      padding: 20px;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 8px;
+      background-color: #e0e0e0;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    button:hover {
+      background-color: #ccc;
+    }
+
+    .operator {
+      background-color: #ffd54f;
+    }
+
+    .equal {
+      background-color: #4caf50;
+      color: white;
+      grid-column: span 2;
+    }
+
+    .clear {
+      background-color: #f44336;
+      color: white;
+    }
+
+    .backspace {
+      background-color: #607d8b;
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="calculator">
+    <div class="display" id="display">0</div>
+    <div class="buttons">
+      <!-- Row 1 -->
+      <button class="clear">C</button>
+      <button class="backspace">⌫</button>
+      <button class="operator">/</button>
+      <button class="operator">*</button>
+
+      <!-- Row 2 -->
+      <button>7</button>
+      <button>8</button>
+      <button>9</button>
+      <button class="operator">-</button>
+
+      <!-- Row 3 -->
+      <button>4</button>
+      <button>5</button>
+      <button>6</button>
+      <button class="operator">+</button>
+
+      <!-- Row 4 -->
+      <button>1</button>
+      <button>2</button>
+      <button>3</button>
+      <button class="equal">=</button>
+
+      <!-- Row 5 -->
+      <button>0</button>
+      <button>.</button>
+    </div>
+  </div>
+
+  <script>
+    // Get the display element
+    const display = document.getElementById('display');
+
+    // Store current input string
+    let currentInput = '';
+
+    // Handle button click
+    document.querySelector('.buttons').addEventListener('click', (event) => {
+      const value = event.target.textContent;// <--- This assigns the button's label (e.g., '1', '+')
+
+      if (value === 'C') {
+        clearDisplay();
+      } else if (value === '⌫') {
+        backspace();
+      } else if (value === '=') {
+        calculate();
+      } else {
+        appendToDisplay(value);  // <--- Passed into the function here
+        //So, when a user clicks a button, 
+        //value becomes whatever text is on that button (e.g., '1', '+', '7', etc.).
+        //<button> 3 </button> ,
+        //<button> + </button> ,
+        //<button> 5 </button> ,
+        //<button> = </button> | 
+        // 3 + 5 = 8
+
+      }
+    });
+
+    // Append number/operator to the input
+
+
+
+    function appendToDisplay(value) {
+      if (currentInput === '0' && value !== '.') {    
+        currentInput = value;// ✅ replaces the '0' (only at the beginning)   replaced by the new number you typed (like '1', '2', etc)
+        //But if you typed '.' (dot), it doesn't replace '0', it goes to the else block.
+
+      } else {
+        currentInput += value;// ➕ appends more numbers to the end
+        //Take whatever is already in currentInput and add the new button value to the end of it.”
+      }
+      updateDisplay();
+    }
+
+    // First 2 came from appendToDisplay(value) stored in curretIndex -> updateDisplay()
+    // secondly + came from appendToDisplay(value) stored in curretIndex -> updateDisplay()
+
+    // Update the screen
+    function updateDisplay() {
+      display.textContent = currentInput || '0';
+      // In here currentInput has the ability to store Multiple elements ( eg. 2 + 5 , 7+8, etc... )
+      // It can store multiple inputs 8 + 9 = 17 + 7 = 24
+    }
+
+    // Clear all input
+    function clearDisplay() {
+      currentInput = '';
+      updateDisplay();
+    }
+
+    // Remove last character
+    function backspace() {
+      currentInput = currentInput.slice(0, -1);
+      // Minus only one value from last
+      // means decrease from Last Value
+      updateDisplay();
+    }
+
+    // Evaluate the expression
+    function calculate() {
+      try {
+        const result = eval(currentInput); // eval('5+3') = 8 // 
+        //('5+3') black area on the calculator where results and inputs are shown , then only we click = which is calculate function
+
+        currentInput = result.toString(); // '8'
+      } catch (err) {
+        currentInput = 'Error';
+      }
+      updateDisplay(); // display.textContent = '8'
+    }
+
+
+    // Keyboard support
+    document.addEventListener('keydown', (e) => {
+      const allowedKeys = '0123456789/*-+.';
+
+      if (allowedKeys.includes(e.key)) {
+        appendToDisplay(e.key);
+      } else if (e.key === 'Enter') {
+        e.preventDefault();
+        calculate();
+      } else if (e.key === 'Backspace') {
+        backspace();
+      } else if (e.key === 'Escape') {
+        clearDisplay();
+      }
+    });
+  </script>
+</body>
+
+</html>
+
+
+
+<!-- 🔧 Property    	✅ Use When You Want To...	                               📌 Behavior
+textContent           Read/write all text, even hidden ones	           Gets all text, fast, no styling/HTML
+innerText	            Read/write visible text only (ignores hidden)	   Affected by CSS (display: none, etc)
+innerHTML	            Insert HTML tags or read raw HTML	               Parses tags (<b>, <i>, etc.) -->
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mini Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f2f2f2;
+    }
+
+    .calculator {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      width: 250px;
+    }
+
+    .display {
+      background: #222;
+      color: white;
+      font-size: 2rem;
+      padding: 10px;
+      text-align: right;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+
+    .buttons {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+
+    button {
+      padding: 15px;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 8px;
+      background-color: #e0e0e0;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #ccc;
+    }
+
+    .equal {
+      background-color: #4caf50;
+      color: white;
+      grid-column: span 2;
+    }
+
+    .clear {
+      background-color: #f44336;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="calculator">
+    <div class="display" id="display">0</div>
+    <div class="buttons">
+      <button class="clear">C</button>
+      <button>7</button>
+      <button>8</button>
+      <button>9</button>
+      <button>/</button>
+      <button>4</button>
+      <button>5</button>
+      <button>6</button>
+      <button>*</button>
+      <button>1</button>
+      <button>2</button>
+      <button>3</button>
+      <button>-</button>
+      <button>0</button>
+      <button>.</button>
+      <button class="equal">=</button>
+      <button>+</button>
+    </div>
+  </div>
+
+  <script>
+    const display = document.getElementById('display');
+    let currentInput = '0';
+
+    // Button click event listeners
+    document.querySelectorAll('button').forEach(button => {
+      button.addEventListener('click', () => {
+        const value = button.textContent;
+
+        if (value === 'C') {
+          clearDisplay();
+        } else if (value === '=') {
+          calculate();
+        } else {
+          appendToDisplay(value);
+        }
+      });
+    });
+
+    // Append number/operator to the input
+    function appendToDisplay(value) {
+      if (currentInput === '0' && value !== '.') {
+        currentInput = value;
+      } else {
+        currentInput += value;
+      }
+      updateDisplay();
+    }
+
+    // Update the display with the current input
+    function updateDisplay() {
+      display.textContent = currentInput;
+    }
+
+    // Clear the display
+    function clearDisplay() {
+      currentInput = '0';
+      updateDisplay();
+    }
+
+    // Evaluate the expression
+    function calculate() {
+      try {
+        currentInput = eval(currentInput).toString();
+      } catch (e) {
+        currentInput = 'Error';
+      }
+      updateDisplay();
+    }
+  </script>
+
+</body>
+</html> -->

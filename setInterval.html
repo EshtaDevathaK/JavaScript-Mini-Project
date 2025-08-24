@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>🕒 Timer with Start/Stop/Reset</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 50px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin: 10px;
+      cursor: pointer;
+    }
+    #timeDisplay {
+      font-size: 2em;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h2>🕒 Timer (Start/Stop/Reset)</h2>
+  
+  <div id="timeDisplay">00:00</div>
+  
+  <button id="startBtn">Start</button>
+  <button id="stopBtn" disabled>Stop</button>
+  <button id="resetBtn">Reset</button>
+
+  <script>
+   let timerInterval;
+   let seconds = 0;
+
+// 1️⃣ Update the display with formatted time
+function updateDisplay() {
+  // ─── Calculate total minutes ───────────────────────────────
+  // seconds / 60:  converts total seconds into minutes (e.g., 385 / 60 ≈ 6.4167)
+  // Math.floor(...): chops off any fractional part to get whole minutes (6)
+  const minutes = Math.floor(seconds / 60);
+
+  // ─── Calculate leftover seconds ─────────────────────────────
+  // seconds % 60:  remainder after dividing by 60 gives the leftover seconds
+  // (385 % 60 = 25, because 6×60 = 360, and 385−360 = 25)
+  const remainingSeconds = seconds % 60;
+
+  // ─── Format with leading zeros ──────────────────────────────
+  // minutes < 10 ? "0"+minutes : minutes
+  //   if minutes is single-digit, prefix a "0" (e.g., "06" instead of "6")
+  // same for remainingSeconds
+  const formatted =
+    `${minutes < 10 ? "0" + minutes : minutes}`
+    + `:` +
+    `${remainingSeconds < 10 ? "0" + remainingSeconds : remainingSeconds}`;
+
+  // ─── Update the DOM ─────────────────────────────────────────
+  // Puts "06:25" into the element with id="timeDisplay"
+const display = document.getElementById("timeDisplay");  
+display.textContent = formatted;  
+
+
+// document.getElementById("timeDisplay").textContent = formatted;
+
+}
+
+// 2️⃣ Start the timer
+document.getElementById("startBtn").addEventListener("click", () => {
+  // setInterval: run this callback every 1000 ms (1 second)
+  // It returns an ID (timerInterval) so we can stop it later.
+  timerInterval = setInterval(() => {
+    seconds++;          // increment the total seconds by 1 each tick
+    updateDisplay();    // recalculate minutes/seconds and refresh the screen
+  }, 1000);
+
+  // Disable Start so you can’t spam-click and create multiple intervals
+  document.getElementById("startBtn").disabled = true;
+  // Enable Stop so the user can pause the clock
+  document.getElementById("stopBtn").disabled = false;
+
+
+
+// Because disabled is a standard boolean property of HTML elements — just like .innerText, .value, or .checked.
+
+
+
+});
+
+// 3️⃣ Stop the timer
+document.getElementById("stopBtn").addEventListener("click", () => {
+  // clearInterval: stops the repeated setInterval using its ID
+  clearInterval(timerInterval);
+
+  // Re-enable Start so you can resume later
+  document.getElementById("startBtn").disabled = false;
+  // Disable Stop (since it’s already paused)
+  document.getElementById("stopBtn").disabled = true;
+});
+
+// 4️⃣ Reset the timer
+document.getElementById("resetBtn").addEventListener("click", () => {
+  // Stop any running timer first
+  clearInterval(timerInterval);
+
+  // Reset the counter back to zero seconds
+  seconds = 0;
+
+  // Refresh display to show "00:00"
+  updateDisplay();
+
+  // Put buttons back to initial state: Start enabled, Stop disabled
+  document.getElementById("startBtn").disabled = false;
+  document.getElementById("stopBtn").disabled = true;
+});
+
+  </script>
+</body>
+</html>
+
+

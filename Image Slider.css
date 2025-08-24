@@ -1,0 +1,69 @@
+/* Reset default styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Center the whole slider */
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f2f2f2;
+    font-family: sans-serif;
+  }
+  
+  /* Slider outer box */
+  .slider-container {
+    max-width: 400px;
+    overflow: hidden;
+    position: relative;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    background-color: #fff;
+  }
+  
+  /* All slides in a horizontal row */
+  .Image-wrapper {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+  }
+  
+  /* Each slide takes full container width */
+  .slide {
+    min-width: 100%;
+  }
+  
+  /* Images stretch to fill slide */
+  .slide img {
+    width: 100%;
+    display: block;
+  }
+  
+  /* Navigation buttons container */
+  .buttons {
+    position: absolute;
+    top: 50%;
+    width: 400px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px;
+  }
+  
+  /* Individual button style */
+  .buttons button {
+    background-color: rgba(113, 113, 113, 0.5);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .buttons button:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+  

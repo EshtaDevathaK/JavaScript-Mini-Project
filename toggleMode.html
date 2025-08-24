@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>🌗 Dark Mode Toggle</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      transition: 0.3s, color 0.3s;
+      padding: 20px;
+    }
+
+    .dark-modey {
+      background-color: #121212;
+      color: white;
+    }
+
+    .light-modey {
+      background-color: #ffffff;
+      color: #000000;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h2>🌓 Theme Toggle (Dark/Light)</h2>
+  <p>This site remembers your theme even after refreshing!</p>
+  <button id="themeToggleBtn">🌙 Switch to Dark Mode</button>
+
+  <script>
+    const body = document.body;
+    const toggleBtn = document.getElementById("themeToggleBtn");
+
+    // 🧠 Load saved theme from localStorage (if any)
+    const savedTheme = localStorage.getItem("theme"); // The key is "theme", and the value is either "light" or "dark"
+   // localStorage.getItem("theme") is used to retrieve the value associated with the key "theme". 
+   // It checks if the browser has a stored theme, which could be "light" or "dark" (depending on the user’s last choice).
+
+
+  // classList :
+  // The classList property is a read-only DOM API on Element 
+  // that returns a live DOMTokenList representing the element’s CSS classes
+
+//If You need things to stay as it is after refresh then You need this 
+    if (savedTheme === "darky") {
+      body.classList.add("dark-modey");//If You ignore this after refresh theme mode will be Not the prev state You left Over
+      toggleBtn.textContent = "☀️ Switch to Light Mode"; //If You ignore this after refresh text will be Not the prev state You left Over
+    } else {
+      body.classList.add("light-modey");
+     // toggleBtn.textContent = "☀️ Switch to Light Mode";
+    }
+
+    // 🎯 Toggle button logic
+    toggleBtn.addEventListener("click", () => {
+      if (body.classList.contains("dark-modey")) {
+        // 🌞 Switch to light
+        body.classList.replace("dark-modey", "light-modey");
+        toggleBtn.textContent = "🌙 Switch to Dark Mode";
+        localStorage.setItem("theme", "lighty");
+      } else {
+        // 🌙 Switch to dark
+        body.classList.replace("light-modey", "dark-modey");
+        toggleBtn.textContent = "☀️ Switch to Light Mode";
+        localStorage.setItem("theme", "darky"); // localStorage.setItem(): Save data (store something with a key).
+      }
+    });
+  </script>
+</body>
+</html>
+
+
+
+<!-- 🔑 Local Storage's Main Role:
+The main job of localStorage is to store the theme preference (whether it's dark mode or light mode)
+ so that whenever you refresh the page or revisit the site later, it will remember the theme you last used.
+ 
+ localStorage is just like a memory that ensures your theme preference stays the same across page reloads and sessions.
+ 
+
+
+ ✅ 1️⃣ textContent vs innerText — Can I use innerText instead?
+Yes, you can use innerText instead of textContent — both will work in this case. But here’s the difference in simple language:
+
+     textContent	                                  innerText
+  * Returns all text, even hidden	                * Returns only visible text
+  * Faster, more accurate	                        * Slightly slower, styled-aware
+  * Ignores CSS	                                  * Respects CSS (e.g., display:none)
+  * Used mostly for code manipulation	            * Used for UI-level text
+ 
+ 
+ 
+ 
+
+😊 How it works:
+
+The browser’s localStorage acts like a storage box that keeps data. (data is the -> Value: "dark" or "light")
+
+Key: "theme"
+
+Value: "dark" or "light" (based on the user's last selection).
+
+localStorage.getItem("theme") will visit this storage box, look for the key "theme", and retrieve its value (either "dark" or "light").
+ 
+ 
+  -->

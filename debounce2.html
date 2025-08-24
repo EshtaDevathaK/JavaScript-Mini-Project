@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>🔍 Debounce Live Search + Suggestions</title>
+  <style>
+    #suggestions {
+      border: 1px solid #aaa;
+      max-width: 300px;
+      margin-top: 5px;
+    }
+    #suggestions div {
+      padding: 8px;
+      cursor: pointer;
+    }
+    #suggestions div:hover {
+      background-color: #eee;
+    }
+  </style>
+</head>
+<body>
+  <h2>🔍 Smart Search (Debounce + Suggestion + Result)</h2>
+
+  <input type="text" id="searchInput" placeholder="Start typing..." />
+  <div id="loader" style="display:none;">⌛ Searching...</div>
+  <div id="suggestions"></div>
+  <div id="result" style="margin-top: 10px; font-weight: bold;"></div>
+
+  <script>
+    // 🧠 Fake database: These are the items available in our "system"
+    const mockData = [
+      "Apple", "Apricot", "Avocado", "Banana", "Blueberry",
+      "Cherry", "Date", "Fig", "Grapes", "Guava", "Kiwi",
+      "Lemon", "Mango", "Melon", "Orange", "Papaya",
+      "Peach", "Pear", "Pineapple", "Plum", "Raspberry",
+      "Strawberry", "Watermelon"
+    ];
+
+    // ⏱️ DEBOUNCE: "Wait until the user stops typing for 500ms, THEN do the search"
+    function debounce(func, delay) {
+      let timeoutId;
+      return function (...args) {
+        clearTimeout(timeoutId); // "Oops, user typed again! Cancel old timer"
+        timeoutId = setTimeout(() => {
+          func.apply(this, args); // "Okay, user paused. Now search!"
+        }, delay);
+      };
+    }
+
+    // 🔍 Show suggestions based on user input
+    function showSuggestions(query) {
+      const loader = document.getElementById("loader");
+      const suggestionsBox = document.getElementById("suggestions");
+      const result = document.getElementById("result");
+
+      loader.style.display = "block"; // Show loading text
+      suggestionsBox.innerHTML = "";  // Clear old suggestions
+      result.textContent = "";        // Clear final result if any
+
+      setTimeout(() => {
+        loader.style.display = "none"; // Hide loading
+
+        // 🧠 Match only items that START with what user typed (case-insensitive)
+        const matches = mockData.filter(item =>
+          item.toLowerCase().startsWith(query.toLowerCase())
+        );
+
+        if (matches.length === 0) {
+          suggestionsBox.innerHTML = "<div>❌ No matches found</div>";
+          return;
+        }
+
+        // 🎯 Show suggestions one by one
+        matches.forEach(item => {
+          const div = document.createElement("div");
+          div.textContent = item;
+          
+          // ✅ When user clicks a suggestion
+          div.onclick = () => {
+            document.getElementById("searchInput").value = item;
+            suggestionsBox.innerHTML = "";
+            result.textContent = `✅ Final result: "${item}" selected`;
+          };
+
+          suggestionsBox.appendChild(div);
+        });
+      }, 700); // Simulate API wait
+    }
+
+    // 🧠 Set up search box with debounce
+    const input = document.getElementById("searchInput");
+    const debouncedSearch = debounce(() => {
+      const query = input.value.trim(); // Remove empty spaces
+      if (query) showSuggestions(query); // Only search if not empty
+      else {
+        document.getElementById("suggestions").innerHTML = "";
+        document.getElementById("result").textContent = "";
+      }
+    }, 500); // 0.5 second delay
+
+    input.addEventListener("input", debouncedSearch);
+  </script>
+</body>
+</html>

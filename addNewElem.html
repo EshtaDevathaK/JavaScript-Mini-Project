@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .note {
+            font-size: 18px;
+            color: green;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <button onclick="create()">Click Here!</button>
+
+    <script>
+        function create() {
+            // Create a new <div> element
+            let geeks = document.createElement('div');
+            
+            // Set the text content
+            geeks.textContent = "GeeksforGeeks";
+            
+            // Add a class to it
+            geeks.setAttribute('class', 'note');
+            
+            // Append it to the body
+            document.body.appendChild(geeks);
+        }
+    </script>
+</body>
+</html>
+
+

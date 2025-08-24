@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Manual API Trigger</title>
+
+</head>
+<body>
+  <h2>🚀 Simulated API Call with Button</h2>
+
+  <button id="fetchBtn">Fetch Data</button>
+  <div id="loader" style="display:none;">Loading...</div>
+  <div id="output"> </div>
+
+  <script>
+    // Simulate fake API
+    function fakeApiCall() {  
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          resolve("✅ Data received from API!");
+        }, 2000);
+      });
+    }
+
+    // Async function using await
+    async function fetchData() {
+      const loader = document.getElementById("loader");
+      const output = document.getElementById("output");
+
+      loader.style.display = "block"; // When fetchData() is called -> prevState = Loading is Invisible  , currState = Loading...
+      output.textContent = "";
+
+      try {
+        const result = await fakeApiCall();
+        loader.style.display = "none";
+        output.textContent = result;
+      } catch (error) {
+        loader.style.display = "none";
+        output.textContent = "❌ Something went wrong.";
+      }
+    }
+
+    // Button event listener
+    const btn = document.getElementById("fetchBtn");
+    btn.addEventListener("click", fetchData);
+  </script>
+</body>
+</html>
+
+
+<!-- ✅ Full Lifecycle of Your API Simulation
+Initial State
+
+loader is hidden (display: none)
+
+output is empty
+
+User Clicks Button (btn.addEventListener)
+
+fetchData() is triggered
+
+loader.style.display = "block" → "Loading..." becomes visible
+
+output.textContent = "" → Clears any previous result
+
+Awaiting fakeApiCall()
+
+Simulates a 2-second delay with setTimeout
+
+Success Path (try block)
+
+After 2 seconds:
+
+loader.style.display = "none" → "Loading..." disappears
+
+output.textContent = result → Shows "✅ Data received from API!"
+
+Error Handling (catch block)
+
+If an error occurs (not in this current simulation), it would:
+
+Hide the loader
+
+Show: "❌ Something went wrong." -->

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Simple Image Slider</title>
+  <link rel="stylesheet" href="Image Slider.css" />
+</head>
+
+<body>
+
+
+  <!-- Slider container -->
+  <div class="slider-container">
+
+    <!-- Slides wrapper -->
+    <div class="Image-wrapper" id="slider">
+      <div class="slide"><img
+          src="https://images.unsplash.com/photo-1746365588686-a3e1846a3476?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          alt="Slide 1" /></div>
+      <div class="slide"><img
+          src="https://images.unsplash.com/photo-1746483966639-b8dafcd05f5b?q=80&w=1976&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          alt="Slide 2" /></div>
+      <div class="slide"><img
+          src="https://images.unsplash.com/photo-1742201949705-220268ad4467?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          alt="Slide 3" /></div>
+    </div>
+
+    <!-- Navigation buttons -->
+    <!-- Parent div  [ slider-container ]
+       la position relative iruntha thaan
+      child [ div class="buttons" ] can use Position absolute -->
+    <div class="buttons">
+      <button id="prev">Prev</button>
+      <button id="next">Next</button>
+    </div>
+  </div>
+
+  <script src="ImageSlider.js"></script>
+</body>
+
+</html>

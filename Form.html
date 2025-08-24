@@ -1,0 +1,44 @@
+<!DOCTYPE html>   
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+</head>
+<body>
+    <form id="registrationForm">
+        <input type="text" id="name" placeholder="Enter your name" />
+        <input type="text" id="email" placeholder="Enter your email" />
+        <input type="password" id="password" placeholder="Enter password" />
+        <input type="password" id="confirmPassword" placeholder="Confirm password" />
+        <button type="submit">Register</button>
+        <div id="errorMessages" style="color: red; margin-top: 10px;"></div>
+    </form>
+      <script src="Form.js"></script>
+      
+</body>
+</html>
+
+
+
+<!-- Now let’s break down this example:
+
+| hasLetter  | hasNumber  | !hasLetter  || !hasNumber | Result |
+|----------  |----------- |---------------------------|--------|
+| ✅ true    | ❌ false  | false       || true       | true   |
+
+🧠 What’s happening here:
+hasLetter = true → means: the password does contain a letter
+
+!hasLetter = false → because it's not missing a letter
+
+hasNumber = false → means: password does NOT contain a number
+
+!hasNumber = true → because it's missing a number
+
+So now we check:
+
+if (false || true) → true
+That means:
+
+❗The password is invalid because it is missing a number. -->

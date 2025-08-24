@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<input id="Input" placeholder="Enter your todo">
+<button onclick="add()">ADD</button>
+<ul id="Un-OrderedList"></ul>
+
+<script>
+    let ul = document.getElementById("Un-OrderedList");
+    let input = document.getElementById("Input");
+
+    function add() {
+        if (input.value.trim() === "") return; // corner case very much mandatory to mention
+
+        let listItem = document.createElement("li");
+
+        // Create span to hold the text
+        let span = document.createElement("span");
+        span.innerText = input.value;
+
+        // Create Complete button
+        let completeBtn = document.createElement("button");
+        completeBtn.innerText = "✅"; // To store in The Updated text comes via input
+        completeBtn.onclick = () => {
+            span.style.textDecoration = span.style.textDecoration === "line-through" ? "none" : "line-through";
+        };
+
+        // Create Edit button
+        let editBtn = document.createElement("button");
+        editBtn.innerText = "✏️";
+        editBtn.onclick = () => {
+        // span.innerText  ->  Shows the current task text inside the pop-up for editing.
+        let newText = prompt("Edit your task:", span.innerText); // span.innerText → accesses the current task text inside the <span> element.
+        if (newText !== null && newText.trim() !== "") { 
+                span.innerText = newText;  // span.innerText where the text are all stored Okay , We put newText inside span.innerText , which holds the text
+            }
+        };
+
+        // Create Delete button
+        let deleteBtn = document.createElement("button");
+        deleteBtn.innerText = "🗑️";
+        deleteBtn.onclick = () => {
+        listItem.remove();
+        };
+
+        // Append everything
+        listItem.appendChild(span);
+        listItem.appendChild(completeBtn);
+        listItem.appendChild(editBtn);
+        listItem.appendChild(deleteBtn);
+
+        ul.appendChild(listItem);
+
+        input.value = "";
+    }
+</script>
+
+</body>
+</html>
+     <!-- 🎯 Big Differences Explained Simply:
+💥 Feature	                                ✅ With <span>	                                     ❌ Without <span>
+🎯 Target                                   only the text	Yes — use span.innerText, span.style	No — must work on full <li>
+✏️ Easy editing                         	Yes — edit span.innerText                           	Hard — must rebuild entire <li>
+🎨 Easy styling	                            Yes — just style the span                           	No — styles apply to full <li>
+🧼 Clean structure	                        Yes — text & buttons are separate                       No — all mixed together
+🔁 Reusable & scalable	                    ✅ Very flexible                           	          ❌ Not flexible -->
+
+
+
+
+
+<!-- ✅ HTML Part
+html
+Copy
+Edit
+<input id="Input" placeholder="Enter your todo">
+<input>: A box to type your todo.
+
+id="Input": Gives this input a name so JavaScript can find it.
+
+placeholder="Enter your todo": Grey text that shows inside the input box until you type something.
+
+html
+Copy
+Edit
+<button onclick="add()">ADD</button>
+<button>: A clickable button.
+
+onclick="add()": When you click, the add() function runs in JavaScript.
+
+html
+Copy
+Edit
+<ul id="Un-OrderedList"></ul>
+<ul>: Unordered list. It holds your tasks (<li> items).
+
+id="Un-OrderedList": Gives it a name so JavaScript can find it.
+
+✅ JavaScript Part
+js
+Copy
+Edit
+let ul = document.getElementById("Un-OrderedList");
+let: Declares a variable.
+
+ul: Variable name (we're calling it ul for "unordered list").
+
+document.getElementById("Un-OrderedList"): Finds the <ul> by its id.
+
+js
+Copy
+Edit
+let input = document.getElementById("Input");
+input: Variable name to hold the input box.
+
+Finds the input element by its id.
+
+✅ Function: add()
+js
+Copy
+Edit
+function add() {
+function: Declares a function.
+
+add(): Name of the function that runs when you click the "ADD" button.
+
+js
+Copy
+Edit
+if (input.value.trim() === "") return;
+input.value: Gets the text you typed.
+
+.trim(): Removes spaces from start and end.
+
+=== "": Checks if it's empty.
+
+return: Stops the function if nothing was typed.
+
+js
+Copy
+Edit
+let listItem = document.createElement("li");
+Creates a new <li> element (a list item) to hold your todo.
+
+js
+Copy
+Edit
+let span = document.createElement("span");
+span.innerText = input.value;
+span: An inline tag to hold text.
+
+.innerText: Sets the text to what you typed in the input box.
+
+✅ Button: Complete ✅
+js
+Copy
+Edit
+let completeBtn = document.createElement("button");
+completeBtn.innerText = "✅";
+completeBtn.onclick = () => {
+    span.style.textDecoration = 
+        span.style.textDecoration === "line-through" ? "none" : "line-through";
+};
+Creates a ✅ button.
+
+When clicked:
+
+Adds/removes a line through the text (line-through = completed).
+
+✅ Button: Edit ✏️
+js
+Copy
+Edit
+let editBtn = document.createElement("button");
+editBtn.innerText = "✏️";
+editBtn.onclick = () => {
+    let newText = prompt("Edit your task:", span.innerText);
+    if (newText !== null && newText.trim() !== "") {
+        span.innerText = newText;
+    }
+};
+Creates an ✏️ button.
+
+When clicked:
+
+Opens a prompt() box with the current text.
+
+If the user enters new text, it updates the todo.
+
+✅ Button: Delete 🗑️
+js
+Copy
+Edit
+let deleteBtn = document.createElement("button");
+deleteBtn.innerText = "🗑️";
+deleteBtn.onclick = () => {
+    listItem.remove();
+};
+Creates a 🗑️ button.
+
+When clicked: Removes the entire task from the list.
+
+✅ Append Everything
+js
+Copy
+Edit
+listItem.appendChild(span);
+listItem.appendChild(completeBtn);
+listItem.appendChild(editBtn);
+listItem.appendChild(deleteBtn);
+appendChild(): Adds items to the <li> one by one:
+
+Adds text (span)
+
+Then ✅
+
+Then ✏️
+
+Then 🗑️
+
+js
+Copy
+Edit
+ul.appendChild(listItem);
+Adds the full <li> to the <ul> (the main list).
+
+js
+Copy
+Edit
+input.value = "";
+Clears the input box after adding the todo.
+ -->
